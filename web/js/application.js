@@ -1,4 +1,4 @@
-noSleep.enable()
+var noSleep = new NoSleep()
 
 var app = new Vue({
     el:'#app',
@@ -16,6 +16,7 @@ var app = new Vue({
     methods:{
         nextTask:function(){
             if(this.stat=="init"){
+                noSleep.enable()
                 this.on_task=true
                 this.lock=false
                 this.stat="normal"
