@@ -11,10 +11,20 @@ var app = new Vue({
         completed:0,
         lock:true,
         stat:"init",
-        display_task:false
+        display_task:false,
+        no_sleep:true,
+        mouse_stat:0,
+        last_mouse:-1,
+        supress_click:false,
+        settings:false
     },
     methods:{
         nextTask:function(){
+            if(this.supress_click==true){
+                this.supress_click=false
+                console.log('supress')
+                return
+            }
             if(this.stat=="init"){
                 noSleep.enable()
                 this.on_task=true
@@ -73,6 +83,21 @@ var app = new Vue({
                 this.time_second=0
             }
 
+        },
+        handleLongPress:function(type){
+            if(type==0){
+                this.last_mouse=new Date().getTime()
+            } else if(type==1){
+                //Long press - settings
+                console.log('lp')
+                var t=new Date().getTime()
+                console.log(t-this.last_mouse>1500)
+                if(t-this.last_mouse>=1500){
+                    this.settings=true
+                    this.supress_click=true
+                    this.lock=true
+                }
+            }
         }
     }
 })
