@@ -6,10 +6,13 @@
 
     <body>
         <div id="app" v-cloak>
-            <div id="settings" v-if="settings" v-on:click="settings=false; lock=false">
+            <div id="settings" v-if="settings" v-on:click="quitSettings">
                 <div class="flex-center n">Paused</div>
             </div>
-            <div id="wrapper" v-on:click="nextTask" v-on:mousedown="handleLongPress(0)" v-on:mouseup="handleLongPress(1)">
+            <div id="touch-events-layer" v-on:click="nextTask" v-on:mousedown="handleLongPress(0)" v-on:mouseup="handleLongPress(1)" v-on:touchstart="handleLongPress(0)" v-on:touchend="handleLongPress(1)" v-on:touchcancel="handleLongPress(1)">
+
+            </div>
+            <div id="wrapper">
                 <div id="inner">
                     <div id="notification" v-if="!display_task" class="flex-center n">{{ notification }}</div>
                     <div id="task" class="flex-center n" v-if="display_task">距离{{ task }}结束还有</div>
