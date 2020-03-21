@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./css/application.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    </head>
+
+    <body>
+        <div id="app" v-cloak>
+            <div id="wrapper" v-on:click="nextTask">
+                <div id="inner">
+                    <div id="notification" v-if="!display_task" class="flex-center n">{{ notification }}</div>
+                    <div id="task" class="flex-center n" v-if="display_task">距离{{ task }}结束还有</div>
+                    <div id="timer" class="flex-center">{{ time_minute<10?"0":"" }}{{ time_minute?time_minute:"0" }}:{{ time_second<10?"0":"" }}{{ time_second?time_second:"0" }}</div>
+                    <div id="completed" class="flex-center">完成的番茄:{{ completed }}</div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="./js/vue.js"></script>
+    <script src="./js/application.js"></script>
+</html>
