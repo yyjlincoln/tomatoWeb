@@ -1,9 +1,11 @@
+noSleep.enable()
+
 var app = new Vue({
     el:'#app',
     data:{
         task: "任务",
-        time_minute: 0,
-        time_second:3,
+        time_minute: 25,
+        time_second:0,
         on_task:false,
         notification:"点按以开始",
         completed:0,
